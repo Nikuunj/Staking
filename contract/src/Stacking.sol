@@ -42,7 +42,7 @@ contract StakingContract {
         return currnetReward + newReward;
     }
 
-
+    
     function claimRewards() public {
         uint256 currnetReward = unclaimedRewards[msg.sender];
         uint256 updateTime = lastUpdateTime[msg.sender];
