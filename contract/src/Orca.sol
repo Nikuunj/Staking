@@ -13,7 +13,7 @@ contract OrcaContract is ERC20, Ownable {
     }
 
     
-    function mint(address _account,uint256 _amount) public {
+    function mint(address _account,uint256 _amount) external {
         require(msg.sender == stakingContract);
         _mint(_account, _amount);
     }

@@ -1,14 +1,21 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.13;
 
-contract StakingContract {
+import { Ownable } from '@openzeppelin/contracts/access/Ownable.sol';
+
+interface IOrca {
+    function mint(address _account, uint256 _amount) external;
+}
+
+contract StakingContract is Ownable {
 
     uint256 totalBalance;
+    address orcaAddress;
     mapping(address => uint256) balances;
     mapping(address => uint) unclaimedRewards;
     mapping(address => uint) lastUpdateTime;
 
-    constructor() {
+    constructor() Ownable(msg.sender) {
 
     }
 
@@ -48,7 +55,7 @@ contract StakingContract {
         uint256 updateTime = lastUpdateTime[msg.sender];
         uint256 newReward =(block.timestamp - updateTime) * balances[msg.sender];
 
-        // currnet + new Reward send to msg.sender
+        IOrca(orcaAddress).mint(msg.sender, newReward + currnetReward);
 
         unclaimedRewards[msg.sender] = 0;
         lastUpdateTime[msg.sender] = block.timestamp;
@@ -56,5 +63,9 @@ contract StakingContract {
 
     function balanceOf(address _address) public view returns (uint256) {
         return balances[_address];
+    }
+
+    function setOrcaAddress(address _orcaAddress) public onlyOwner {
+        orcaAddress = _orcaAddress;
     }
 }
