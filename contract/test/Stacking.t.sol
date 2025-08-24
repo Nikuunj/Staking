@@ -12,12 +12,21 @@ contract TestContract is Test {
         c = new StakingContract();
     }
 
-    function testBar() public {
-        assertEq(uint256(1), uint256(1), "ok");
+    fallback() external payable {}
+
+
+    function testStake() public {
+        assertEq(c.balanceOf(address(this)), 0, "ok");
+        c.stake{ value: 1 ether }();
+        assertEq(c.balanceOf(address(this)), 1 ether, "ok");
     }
 
-    function testFoo(uint256 x) public {
-        vm.assume(x < type(uint128).max);
-        assertEq(x + x, x * 2);
+    function testUnstake() public {
+        assertEq(c.balanceOf(address(this)), 0, "ok");
+        c.stake{ value: 1 ether }();
+        assertEq(c.balanceOf(address(this)), 1 ether, "ok");
+
+        c.unstake(1 ether);
+        assertEq(c.balanceOf(address(this)), 0, "ok");
     }
 }
