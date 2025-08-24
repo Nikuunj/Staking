@@ -12,12 +12,29 @@ contract TestContract is Test {
         c = new OrcaContract();
     }
 
-    function testBar() public {
-        assertEq(uint256(1), uint256(1), "ok");
+    function testMint() public {
+        assertEq(c.balanceOf(address(this)), 0, "ok");
+
+        // only staking contract can mint
+        c.updateStaking(address(this));
+        c.mint(address(this), 10);
+        assertEq(c.balanceOf(address(this)), 10, "ok");
     }
 
-    function testFoo(uint256 x) public {
-        vm.assume(x < type(uint128).max);
-        assertEq(x + x, x * 2);
+    function test_Retreve_mint() public {
+        assertEq(c.balanceOf(address(this)), 0, "ok");
+        vm.expectRevert();
+        c.mint(address(this), 10);
+        assertEq(c.balanceOf(address(this)), 0, "ok");   
+    }
+
+    function testUpgradeStacking() public {
+        c.updateStaking(address(0xB35447212722e8a710042C206f447EA016bcE2e3));
+    }
+
+    function test_Retreve_UpgradeStacking() public {
+        vm.startPrank(address(0xB35447212722e8a710042C206f447EA016bcE2e3));
+        vm.expectRevert();
+        c.updateStaking(address(0xB35447212722e8a710042C206f447EA016bcE2e3));
     }
 }
