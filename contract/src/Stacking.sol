@@ -11,6 +11,9 @@ contract StakingContract is Ownable {
 
     uint256 totalBalance;
     address orcaAddress;
+
+    uint256 public rewardRate = 555555555555555;
+
     mapping(address => uint256) balances;
     mapping(address => uint) unclaimedRewards;
     mapping(address => uint) lastUpdateTime;
@@ -25,7 +28,7 @@ contract StakingContract is Ownable {
         if(lastUpdateTime[msg.sender] != 0) {
             lastUpdateTime[msg.sender]  = block.timestamp;
         } else {
-            unclaimedRewards[msg.sender]  += (block.timestamp - lastUpdateTime[msg.sender]) * balances[msg.sender];
+            unclaimedRewards[msg.sender]  += ((block.timestamp - lastUpdateTime[msg.sender]) * balances[msg.sender]  * rewardRate) / 1e18;
             lastUpdateTime[msg.sender] = block.timestamp;
         }
         balances[msg.sender] += msg.value;
@@ -34,7 +37,7 @@ contract StakingContract is Ownable {
     function unstake(uint _amount) public {
         require(balances[msg.sender] >= _amount);
 
-        unclaimedRewards[msg.sender]  += (block.timestamp - lastUpdateTime[msg.sender]) * balances[msg.sender];
+        unclaimedRewards[msg.sender]  += ((block.timestamp - lastUpdateTime[msg.sender]) * balances[msg.sender] * rewardRate) / 1e18;
         lastUpdateTime[msg.sender] = block.timestamp;
         
         payable(msg.sender).transfer(_amount);
@@ -45,7 +48,7 @@ contract StakingContract is Ownable {
     function getRewards(address _address) public view returns (uint) {
         uint currnetReward = unclaimedRewards[_address];
         uint updateTime = lastUpdateTime[_address];
-        uint newReward =(block.timestamp - updateTime) * balances[_address];
+        uint newReward = ((block.timestamp - updateTime) * balances[_address] * rewardRate) / 1e18;
         return currnetReward + newReward;
     }
 
@@ -53,11 +56,11 @@ contract StakingContract is Ownable {
     function claimRewards() public {
         uint256 currnetReward = unclaimedRewards[msg.sender];
         uint256 updateTime = lastUpdateTime[msg.sender];
-        uint256 newReward =(block.timestamp - updateTime) * balances[msg.sender];
+        uint256 newReward = ((block.timestamp - updateTime) * balances[msg.sender] * rewardRate) / 1e18;
 
         IOrca(orcaAddress).mint(msg.sender, newReward + currnetReward);
-
         unclaimedRewards[msg.sender] = 0;
+
         lastUpdateTime[msg.sender] = block.timestamp;
     } 
 

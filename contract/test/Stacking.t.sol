@@ -41,7 +41,7 @@ contract TestContract is Test {
         vm.warp(futureTimestamp);
 
         uint256 futerReward = c.getRewards(address(this));
-        assertEq(86400000000000000000000, futerReward);
-        // console.log(futerReward);
+        assertEq(47999999999999952000, futerReward);
+        // console.logUint(futerReward);
     }
 }
