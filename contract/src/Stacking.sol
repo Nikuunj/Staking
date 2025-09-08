@@ -12,7 +12,7 @@ contract StakingContract is Ownable {
     uint256 totalBalance;
     address orcaAddress;
 
-    uint256 public rewardRate = 555555555555555;
+    uint256 public rewardRate = 138888888888888;
 
     mapping(address => uint256) balances;
     mapping(address => uint) unclaimedRewards;

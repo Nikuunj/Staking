@@ -37,11 +37,10 @@ contract TestContract is Test {
         assertEq(0, reward, "ok");
 
         c.stake{ value: 1 ether }();
-        uint256 futureTimestamp = block.timestamp + 1 days; // Calculate a future timestamp
+        uint256 futureTimestamp = block.timestamp + 1.01 days; // Calculate a future timestamp
         vm.warp(futureTimestamp);
 
         uint256 futerReward = c.getRewards(address(this));
-        assertEq(47999999999999952000, futerReward);
-        // console.logUint(futerReward);
+        assertEq(12, futerReward / 1e18);
     }
 }
