@@ -2,6 +2,8 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
+import {console} from "forge-std/console.sol";
+
 
 import "src/Stacking.sol";
 
@@ -28,5 +30,18 @@ contract TestContract is Test {
 
         c.unstake(1 ether);
         assertEq(c.balanceOf(address(this)), 0, "ok");
+    }
+
+    function testGetReward() public {
+        uint256 reward = c.getRewards(address(this));
+        assertEq(0, reward, "ok");
+
+        c.stake{ value: 1 ether }();
+        uint256 futureTimestamp = block.timestamp + 1 days; // Calculate a future timestamp
+        vm.warp(futureTimestamp);
+
+        uint256 futerReward = c.getRewards(address(this));
+        assertEq(86400000000000000000000, futerReward);
+        // console.log(futerReward);
     }
 }
