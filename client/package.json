@@ -24,6 +24,7 @@
     "eslint-config-next": "15.5.0",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "viem": "^2.37.5",
     "wagmi": "^2.16.9"
   }
 }
