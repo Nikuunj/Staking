@@ -5,7 +5,7 @@ import OrcaABI from '@/abi/OrcaContract.json'
 import StackingABI from '@/abi/StakingContract.json'
 
 export const config = createConfig({
-   chains: [sepolia],
+   chains: [sepolia],   
    connectors: [
       injected(),
    ],
