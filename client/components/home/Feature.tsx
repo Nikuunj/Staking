@@ -5,11 +5,11 @@ import { Circle, CircleSlash2Icon } from 'lucide-react';
 
 function Feature() {
    return (
-      <section className={`flex flex-col items-center gap-y-7  text-balance mb-22`}>
+      <section className={`flex flex-col items-center gap-y-11  text-balance mb-22`}>
          <h1 className={`text-4xl font-semibold text-center`}>
             Why stake {' '} <ShiningText text="Ethereum" /> {' '}? 
          </h1>
-         <div className="flex flex-wrap gap-9 justify-center">
+         <div className="flex flex-wrap gap-10 justify-center px-3">
             <BoxFeature               
                header="Without Staking"
                Icon={<CircleSlash2Icon className="w-5 h-5 text-red-600 drop-shadow-[0_0_6px_rgba(220,38,38,0.8)]"/>}

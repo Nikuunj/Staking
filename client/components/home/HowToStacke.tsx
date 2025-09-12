@@ -4,12 +4,12 @@ import ShiningText from "../ui/ShiningText"
 
 function HowToStacke() {
    return (
-      <section className={`flex flex-col items-center gap-y-7  text-balance mb-22`}>
+      <section className={`flex flex-col items-center gap-y-11  text-balance mb-22`}>
          <h1 className={`text-4xl font-semibold text-center`}>
             How {' '} <ShiningText text="stake" /> {' '} Ethereum ? 
          </h1>
 
-         <div className="flex flex-wrap gap-10 max-w-2xl justify-center">
+         <div className="flex flex-wrap gap-10 max-w-2xl justify-center px-3">
             <BoxWork 
                header="Connect Wallet"
                icon={<LogInIcon className="text-blue-500 drop-shadow-[0_0_6px_rgba(59,130,246,0.6)]" />}
