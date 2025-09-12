@@ -1,16 +1,14 @@
 "use client"
-import { Connectors } from "@/components/ui/Connectors";
-import { Disconnect } from "@/components/ui/Disconnect";
-import { useAccount, useBalance, useReadContract, useWriteContract } from "wagmi";
-import { parseEther } from 'viem'   
+
 import Hero from "@/components/home/Hero";
+import Feature from "@/components/home/Feature";
 
 export default function Home() {
 
     return (
-        <div>
+        <div>   
             <Hero />
-
+            <Feature />
         </div>
     );
 }
