@@ -10,7 +10,7 @@ function Hero() {
                <span className="text-shadow-lg text-shadow-emerald-900">
                   Start {" "}
                </span>
-               <ShiningText text={'Stacking'} />
+               <ShiningText text={'Staking'} />
                <span className="text-shadow-lg text-shadow-emerald-900">
                   {" "} With US
                </span>

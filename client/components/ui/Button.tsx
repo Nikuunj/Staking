@@ -14,7 +14,7 @@ function Button({ children, className, varient, size }: ButtonProps) {
    const style =  {
       default: 'bg-linear-to-r from-emerald-700 to-emerald-950',
       outline: 'border border-emerald-800 text-white hover:bg-zinc-800/50',
-      shine: 'bg-linear-to-r from-emerald-700 to-emerald-950 inset-shadow-[5px_5px_10px] inset-shadow-zinc-900 hover:inset-shadow-neutral-800 border-2 border-zinc-950'
+      shine: 'bg-linear-to-r from-emerald-700 to-emerald-950 inset-shadow-[5px_5px_10px] inset-shadow-zinc-900 hover:inset-shadow-neutral-800 '
    }
 
    const defaultStyle = 'active:translate-y-0.5 outline-0 cursor-pointer transition-all duration-300 text-zinc-300/90 text-shadow-lg'

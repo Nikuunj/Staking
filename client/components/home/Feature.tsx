@@ -1,5 +1,7 @@
+"use client"
 import BoxFeature from "../ui/BoxFeature"
 import ShiningText from "../ui/ShiningText"
+import { Circle, CircleSlash2Icon } from 'lucide-react';
 
 function Feature() {
    return (
@@ -9,7 +11,8 @@ function Feature() {
          </h1>
          <div className="flex flex-wrap gap-9 justify-center">
             <BoxFeature               
-               header="Without Staking" 
+               header="Without Staking"
+               Icon={<CircleSlash2Icon className="w-5 h-5 text-red-600 drop-shadow-[0_0_6px_rgba(220,38,38,0.8)]"/>}
                 points={[
                   "1 ETH today = 1 ETH tomorrow",
                   "No passive income earned",
@@ -18,6 +21,7 @@ function Feature() {
             />
             <BoxFeature 
                header="With Staking" 
+               Icon={<Circle className="w-5 h-5 text-green-700 drop-shadow-[0_0_6px_rgba(34,197,94,0.8)]" />}
                points={[
                   "1 ETH today = 1 ETH + staking rewards tomorrow",
                   "Earn passive income automatically",
