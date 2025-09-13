@@ -4,6 +4,8 @@ import "./globals.css";
 import Provider from "@/components/Provider";
 import Footer from "@/components/ui/Footer";
 import NavBar from "@/components/ui/NavBar";
+import BGLeft from "@/components/ui/BGLeft";
+import BGRight from "@/components/ui/BGRight";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +34,12 @@ export default function RootLayout({
       >
         <Provider>
           <NavBar />
+          <div className="fixed inset-0 -z-20 ">
+            <BGRight />
+            <BGLeft/> 
+          </div>
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </Provider>
       </body>
     </html>
