@@ -35,7 +35,7 @@ function TechnicalInfo() {
                Icon={<LinkIcon className="w-5 h-5 text-yellow-600 drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]" />}
                points={[
                   "Deployed at: " + stacking_address,
-                  "View on Etherscan",
+                  "View on Sepoliascan",
                   "Fully open-source & verified"
                ]}
             />
