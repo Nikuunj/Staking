@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -9,7 +10,7 @@ interface ButtonProps {
 }
 
 
-function Button({ children, className, varient, size }: ButtonProps) {
+function Button({ children, className, varient, size, handleClick }: ButtonProps) {
 
    const style =  {
       default: 'bg-linear-to-r from-emerald-700 to-emerald-950',
@@ -27,6 +28,7 @@ function Button({ children, className, varient, size }: ButtonProps) {
    return (
       <button 
          className={`${className} ${defaultStyle} ${sizes[size]} ${style[varient]}`}
+         onClick={handleClick}
       >
          {children}
       </button>

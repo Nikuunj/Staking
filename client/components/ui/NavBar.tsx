@@ -1,8 +1,13 @@
+"use client"
 import Link from "next/link"
 import ShiningText from "./ShiningText"
-import { BabyIcon, GithubIcon, Grid, Grip } from "lucide-react"
+import { GithubIcon, Grip } from "lucide-react"
+import { useState } from "react"
+import SlideBar from "./SlideBar"
 
 function NavBar() {
+   const [open, setOpen] = useState<boolean>(false);
+
    return (
       <div className={`fixed min-w-screen top-2.5 overflow-hidden z-50`}>
          <div className={`bg-emerald-800/30 inset-shadow-[0px_0px_5px] items-center  inset-shadow-black/90 mx-5 px-5 py-3 rounded-2xl flex justify-between`}>
@@ -16,9 +21,11 @@ function NavBar() {
                   </div>
                </Link>
 
-               <div className="hover:bg-emerald-700/40 p-1 rounded-md">
+               <div className="hover:bg-emerald-700/40 p-1 rounded-md" onClick={() => setOpen(true)}>
                   <Grip className="w-5 h-5" />
                </div>
+
+               { open && <SlideBar closeOpen={setOpen} /> }
             </div>
          </div>
       </div>
