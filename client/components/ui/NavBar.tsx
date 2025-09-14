@@ -1,6 +1,6 @@
 import Link from "next/link"
 import ShiningText from "./ShiningText"
-import { GithubIcon } from "lucide-react"
+import { BabyIcon, GithubIcon, Grid, Grip } from "lucide-react"
 
 function NavBar() {
    return (
@@ -9,12 +9,16 @@ function NavBar() {
             <h1 className="font-bold text-2xl">
                <ShiningText text="XStake" />
             </h1>
-            <div>
+            <div className="flex gap-x-1">
                <Link href={'https://github.com/Nikuunj/staking'}>
                   <div className="hover:bg-emerald-700/40 p-1 rounded-md">
                      <GithubIcon className="text-emerald-200 w-5 h-5" />
                   </div>
                </Link>
+
+               <div className="hover:bg-emerald-700/40 p-1 rounded-md">
+                  <Grip className="w-5 h-5" />
+               </div>
             </div>
          </div>
       </div>
