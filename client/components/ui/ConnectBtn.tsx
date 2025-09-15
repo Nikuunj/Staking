@@ -1,22 +1,22 @@
 "use client"
 import { Connectors } from "@/components/ui/Connectors"
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 
 import Button from "./Button";
 import { XIcon } from "lucide-react";
 
-function ConnectBtn() { 
+function ConnectBtn({ children }: { children: ReactNode }) { 
    const [open, setOpen] = useState<boolean>(false);
    return (
       <div>
-         <div onClick={() => setOpen(true)}>
-            BTN
-         </div>
+         <button className="cursor-pointer outline-0" onClick={() => setOpen(true)}>
+            {children}
+         </button>
          { open &&
             <div className="flex justify-center fixed inset-0 items-center bg-black/35" onClick={() => setOpen(false)}>
-               <section className="border border-emerald-800 bg-emerald-950/80  p-10 rounded-lg w-fit" onClick={(e) => e.stopPropagation()}>
-                  <Button varient='outline' size="sm" className=" relative -top-5 -left-5  rounded-lg" handleClick={() => setOpen(false)}>
-                     <XIcon className=" h-5 w-5 text-red-500"/>
+               <section className="border border-emerald-800 bg-emerald-950/80  p-10 rounded-lg w-fit items-start flex flex-col" onClick={(e) => e.stopPropagation()}>
+                  <Button varient='outline' size="sm" className=" rounded-lg mb-5" handleClick={() => setOpen(false)}>
+                     <XIcon className="h-5 w-5 text-red-500"/>
                   </Button>
                   <Connectors handleClick={() => setOpen(false)}/> 
                </section>

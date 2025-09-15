@@ -1,12 +1,13 @@
 "use client"
+import { ReactNode } from "react";
 import { useDisconnect } from "wagmi";
 
-export function Disconnect() {
+export function Disconnect({ children, className }: { children: ReactNode, className?: string }) {
    const {disconnect} = useDisconnect();
     
    return <div>
-      <button className='mx-2 border rounded p-2 cursor-pointer' onClick={() => disconnect()}>
-         Disconnect wallet
+      <button className={`${className} cursor-pointer`} onClick={() => disconnect()}>
+         {children}
       </button>
    </div>
 }
