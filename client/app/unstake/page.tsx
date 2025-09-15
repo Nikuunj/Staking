@@ -1,7 +1,10 @@
+import UnStakeForm from "@/components/unstake/UnstakeForm"
 
 function page() {
    return (
-      <div>page</div>
+      <div className="min-h-screen flex justify-center items-center">
+         <UnStakeForm />
+      </div>
    )
 }
 

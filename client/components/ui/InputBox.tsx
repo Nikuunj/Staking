@@ -9,7 +9,7 @@ function InputBox({ refrence, placeHolder, typeOfIn, defaultVal }: InputBoxProps
    return (
       <input type={typeOfIn} 
          ref={refrence} 
-         className="border outline-0 px-3 border-emerald-800 py-2 text-base text-emerald-300 rounded-lg" 
+         className="border outline-0 px-3 border-emerald-800 py-2 text-base text-emerald-300 rounded-md" 
          placeholder={placeHolder} 
          defaultValue={defaultVal}
       />
