@@ -24,8 +24,8 @@ function SlideBar({ closeOpen }: { closeOpen: Dispatch<SetStateAction<boolean>> 
             <Link href={'/unstake'} className="w-fit outline-0">
                <div className="w-fit hover:bg-emerald-800/40 p-2 rounded-lg">Withdraw ETH</div>
             </Link>
-            <Link href={'/rewards'} className="w-fit outline-0">
-               <div className="w-fit hover:bg-emerald-800/40 p-2 rounded-lg">Claim Reward</div>
+            <Link href={'/account'} className="w-fit outline-0">
+               <div className="w-fit hover:bg-emerald-800/40 p-2 rounded-lg">Account</div>
             </Link>
             <div className="absolute bottom-15">
                {address ? 

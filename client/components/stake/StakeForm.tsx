@@ -6,7 +6,6 @@ import { useAccount, useWriteContract } from "wagmi";
 import { parseEther } from "viem";
 import { stacking_abi, stacking_address } from "@/config/config";
 import ConnectBtn from "../ui/ConnectBtn";
-import { Disconnect } from "../ui/Disconnect";
 
 function StakeForm() {
    const ref = useRef<any>(Array(1).fill(0));
