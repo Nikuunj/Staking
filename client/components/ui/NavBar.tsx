@@ -4,6 +4,7 @@ import ShiningText from "./ShiningText"
 import { GithubIcon, Grip } from "lucide-react"
 import { useState } from "react"
 import SlideBar from "./SlideBar"
+import { motion } from "framer-motion"
 
 function NavBar() {
    const [open, setOpen] = useState<boolean>(false);
@@ -15,15 +16,24 @@ function NavBar() {
                <ShiningText text="XStake" />
             </h1>
             <div className="flex gap-x-1">
-               <Link href={'https://github.com/Nikuunj/staking'}>
-                  <div className="hover:bg-emerald-700/40 p-1 rounded-md">
-                     <GithubIcon className="text-emerald-200 w-5 h-5" />
-                  </div>
-               </Link>
+               <motion.div
+                  whileTap={{ scale: 0.8 }}
+                  transition={{duration: 0.2}}
+               >
+                  <Link href={'https://github.com/Nikuunj/staking'} target="_blank">
+                     <div className="hover:bg-emerald-700/40 p-1 rounded-md">
+                        <GithubIcon className="text-emerald-200 w-5 h-5" />
+                     </div>
+                  </Link>
+               </motion.div>
 
-               <div className="hover:bg-emerald-700/40 p-1 rounded-md" onClick={() => setOpen(true)}>
+               <motion.div
+                  whileTap={{ scale: 0.8 }}
+                  transition={{duration: 0.2}}
+                  className="hover:bg-emerald-700/40 p-1 rounded-md" onClick={() => setOpen(true)}
+               >
                   <Grip className="w-5 h-5" />
-               </div>
+               </motion.div>
 
                { open && <SlideBar closeOpen={setOpen} /> }
             </div>
