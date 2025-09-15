@@ -6,12 +6,12 @@ import { CoinsIcon } from "lucide-react";
 import { useAccount, useReadContract, useWriteContract } from "wagmi"
 import { formatEther } from "viem";
 
-function page() {
+function Account() {
    const { address } = useAccount();
-   const { data: hash, writeContract } = useWriteContract();
+   const { writeContract } = useWriteContract();
    // console.log('1');
    
-   const { status, data: balance, error } = useReadContract({
+   const { data: balance } = useReadContract({
       abi: stacking_abi,
       address: stacking_address,
       functionName: 'balanceOf',
@@ -87,4 +87,4 @@ function page() {
    )
 }
 
-export default page
+export default Account

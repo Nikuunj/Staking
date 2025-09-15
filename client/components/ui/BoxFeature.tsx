@@ -14,8 +14,8 @@ function BoxFeature({ header, points, Icon }: BoxFeatueProps) {
            {Icon} {header}
          </h2>
          <div className="text-zinc-300/80">
-            {points.map(point => (
-               <p className="max-w-56 sm:min-w-md text-balance break-words">{point}</p>
+            {points.map((point, idx) => (
+               <p key={point + idx} className="max-w-56 sm:min-w-md text-balance break-words">{point}</p>
             ))}
          </div>
       </div>

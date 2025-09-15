@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import * as React from 'react'
-import { Connector, useConnect } from 'wagmi'
+import { useConnect } from 'wagmi'
 import { motion } from "framer-motion";
 
 export function Connectors({ handleClick }: { handleClick: () => void }) {

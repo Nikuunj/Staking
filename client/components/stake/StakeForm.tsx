@@ -8,12 +8,12 @@ import { stacking_abi, stacking_address } from "@/config/config";
 import ConnectBtn from "../ui/ConnectBtn";
 
 function StakeForm() {
-   const ref = useRef<any>(Array(1).fill(0));
+   const ref = useRef<(HTMLInputElement | null)[]>(Array(1).fill(null));
    const { address } = useAccount();
-   const { data: hash, writeContract } = useWriteContract()
+   const { writeContract } = useWriteContract()
 
    const handleSubmit = () => {
-      const amount = ref.current[0].value;
+      const amount = ref.current[0]?.value;
       if(!amount) {
          return;
       }

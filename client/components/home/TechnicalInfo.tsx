@@ -1,4 +1,4 @@
-import { CircleSlash2Icon, LinkIcon, SettingsIcon } from "lucide-react"
+import { LinkIcon, SettingsIcon } from "lucide-react"
 import BoxFeature from "../ui/BoxFeature"
 import ShiningText from "../ui/ShiningText"
 import { stacking_address } from "@/config/config"

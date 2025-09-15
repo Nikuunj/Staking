@@ -9,9 +9,9 @@ import ConnectBtn from "../ui/ConnectBtn";
 
 
 function UnStakeForm() {
-   const ref = useRef<any>(Array(1).fill(0));
+   const ref = useRef<(HTMLInputElement | null)[]>(Array(1).fill(null));
    const { address } = useAccount();
-   const { data: hash, writeContract } = useWriteContract()
+   const { writeContract } = useWriteContract()
 // // 10000000000000
 
 //    const { data } = useReadContract({
@@ -21,7 +21,7 @@ function UnStakeForm() {
 //       args: ['0x1ccC0Ad7b5e8809dC7bea698A6619C3522cf0099']
 //    })
    const handleSubmit = () => {
-      const amount = ref.current[0].value;
+      const amount = ref.current[0]?.value;
       if(!amount) {
          return;
       }
