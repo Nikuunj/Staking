@@ -2,17 +2,22 @@
 import Image from 'next/image'
 import * as React from 'react'
 import { Connector, useConnect } from 'wagmi'
+import { motion } from "framer-motion";
 
 export function Connectors({ handleClick }: { handleClick: () => void }) {
   const { connectors, connect } = useConnect()
 
-  return connectors.map((connector) => {
+  return connectors.map((connector, idx) => {
     const iconSrc = connector.icon?.trim() || null
     const isDataUri = iconSrc?.startsWith("data:")
 
     return (
       <React.Fragment key={connector.uid}>
-        <button
+        <motion.button
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 * idx }}
           onClick={() => { 
               connect({ connector });
               handleClick();
@@ -41,7 +46,7 @@ export function Connectors({ handleClick }: { handleClick: () => void }) {
             ))}
 
           {connector.name}
-        </button>
+        </motion.button>
         <br />
       </React.Fragment>
     )

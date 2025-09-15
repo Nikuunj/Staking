@@ -4,14 +4,18 @@ import { ReactNode, useState } from "react"
 
 import Button from "./Button";
 import { XIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 function ConnectBtn({ children }: { children: ReactNode }) { 
    const [open, setOpen] = useState<boolean>(false);
    return (
       <div>
-         <button className="cursor-pointer outline-0" onClick={() => setOpen(true)}>
+         <motion.button 
+         whileTap={{ scale: 0.8 }}
+         transition={{duration: 0.2}}
+         className="cursor-pointer outline-0" onClick={() => setOpen(true)}>
             {children}
-         </button>
+         </motion.button>
          { open &&
             <div className="flex justify-center fixed inset-0 items-center bg-black/35" onClick={() => setOpen(false)}>
                <section className="border border-emerald-800 bg-emerald-950/80  p-10 rounded-lg w-fit items-start flex flex-col" onClick={(e) => e.stopPropagation()}>
