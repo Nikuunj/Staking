@@ -17,13 +17,13 @@ export function Connectors({ handleClick }: { handleClick: () => void }) {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 * idx }}
+          transition={{ delay: 0.1 * idx, duration: 0.2 }}
           onClick={() => { 
               connect({ connector });
               handleClick();
             }
           }
-          className="max-w-64 break-words flex items-center gap-2 border w-full ps-3 pe-7 py-3 rounded-lg border-emerald-800 hover:bg-emerald-800/30"
+          className="cursor-pointer max-w-64 break-words flex items-center gap-2 border w-full ps-3 pe-7 py-3 rounded-lg border-emerald-800 hover:bg-emerald-800/30"
         >
           {iconSrc &&
             (isDataUri ? (
